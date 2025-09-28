@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Simple Actions -->
+<div class="actions">
+    <button onclick="refreshFeeds()">🔄 Refresh</button>
+    <button onclick="sendDigest()">📧 Email</button>
+    <span class="stats">{{ ai_articles|length + econ_articles|length }} articles</span>
+</div>
+
+<!-- AI Articles -->
+<div class="section">
+    <h2>🤖 AI & Technology</h2>
+    <ul class="article-list">
+        {% for article in ai_articles %}
+        <li>
+            <a href="{{ article.link }}" target="_blank">{{ article.title }}</a>
+            <span class="source">{{ article.source }}</span>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+
+<!-- Economics & Politics Articles -->
+<div class="section">
+    <h2>💰 Economics & Politics</h2>
+    <ul class="article-list">
+        {% for article in econ_articles %}
+        <li>
+            <a href="{{ article.link }}" target="_blank">{{ article.title }}</a>
+            <span class="source">{{ article.source }}</span>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
